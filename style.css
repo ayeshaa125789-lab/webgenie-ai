@@ -1,0 +1,3 @@
+body { font-family: sans-serif; text-align: center; padding: 2rem; background:#eef2ff; }
+input, button { padding:0.7rem; margin:0.5rem; border-radius:8px; border:1px solid #ccc; }
+#output { margin-top:1rem; background:white; padding:1rem; border-radius:8px; }
