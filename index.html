@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WebGenie AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🪄 WebGenie AI</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>🪄 WebGenie AI</h1>
-  <input id="prompt" placeholder="Type website idea">
-  <button onclick="generate()">Generate</button>
+
+  <input id="siteId" placeholder="Enter site ID (e.g. site1)">
+  <input id="prompt" placeholder="Type website idea (e.g. Portfolio)">
+  <button onclick="generate()">Generate Website</button>
+  <button onclick="openSaved()">Open Saved Website</button>
+
   <div id="output"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
