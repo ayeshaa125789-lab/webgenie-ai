@@ -4,17 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🪄 WebGenie AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <h1>🪄 WebGenie AI</h1>
+<body class="bg-indigo-50 text-center p-6">
+  <h1 class="text-3xl font-bold text-indigo-600 mb-4">🪄 WebGenie AI</h1>
+  
+  <div class="space-x-2 mb-6">
+    <input id="siteId" class="border rounded-lg px-3 py-2" placeholder="Enter site ID (e.g. site1)">
+    <input id="prompt" class="border rounded-lg px-3 py-2" placeholder="Type idea (e.g. Portfolio)">
+    <button onclick="generate()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Generate</button>
+    <button onclick="openSaved()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Open</button>
+  </div>
 
-  <input id="siteId" placeholder="Enter site ID (e.g. site1)">
-  <input id="prompt" placeholder="Type website idea (e.g. Portfolio)">
-  <button onclick="generate()">Generate Website</button>
-  <button onclick="openSaved()">Open Saved Website</button>
+  <div id="output" class="bg-white p-6 rounded-xl shadow-md text-left max-w-2xl mx-auto"></div>
 
-  <div id="output"></div>
+  <hr class="my-6">
+
+  <h2 class="text-2xl font-semibold text-indigo-700 mb-3">🗂️ Your Saved Websites</h2>
+  <div id="siteList" class="space-y-2 max-w-md mx-auto"></div>
 
   <script src="script.js"></script>
 </body>
