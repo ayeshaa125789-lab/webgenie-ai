@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🪄 WebGenie AI</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>WebGenie AI</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-indigo-50 text-center p-6">
-  <h1 class="text-3xl font-bold text-indigo-600 mb-4">🪄 WebGenie AI</h1>
-  
-  <div class="space-x-2 mb-6">
-    <input id="siteId" class="border rounded-lg px-3 py-2" placeholder="Enter site ID (e.g. site1)">
-    <input id="prompt" class="border rounded-lg px-3 py-2" placeholder="Type idea (e.g. Portfolio)">
-    <button onclick="generate()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Generate</button>
-    <button onclick="openSaved()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Open</button>
-  </div>
-
-  <div id="output" class="bg-white p-6 rounded-xl shadow-md text-left max-w-2xl mx-auto"></div>
-
-  <hr class="my-6">
-
-  <h2 class="text-2xl font-semibold text-indigo-700 mb-3">🗂️ Your Saved Websites</h2>
-  <div id="siteList" class="space-y-2 max-w-md mx-auto"></div>
+<body>
+  <h1>🪄 WebGenie AI</h1>
+  <input id="prompt" placeholder="Type website idea">
+  <button onclick="generate()">Generate</button>
+  <div id="output"></div>
 
   <script src="script.js"></script>
+
+  <!-- 🔥 Supabase Connection Code -->
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+    const SUPABASE_URL = "https://fadktinnlvnpshpdgneh.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhZGt0aW5ubHZucHNocGRnbmVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwOTg0NjMsImV4cCI6MjA3NzY3NDQ2M30.YxBnwLsfn1Zd3tihqHcT8wD4mrflgoEEZyVrqrk-MVo";
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function saveTestData() {
+      const { data, error } = await supabase
+        .from("websites") // apni table ka naam likho (Supabase me jo banayi)
+        .insert([{ title: "Test Website", code: "<h2>Hello WebGenie!</h2>" }]);
+
+      if (error) {
+        console.error("❌ Error:", error);
+        alert("Error saving data");
+      } else {
+        console.log("✅ Data saved:", data);
+        alert("Website saved successfully!");
+      }
+    }
+
+    saveTestData();
+  </script>
 </body>
 </html>
